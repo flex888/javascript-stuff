@@ -1,0 +1,29 @@
+ let counter = 0;
+    let ourList = document.getElementById("our-list");
+    let ourHeadline = window.document.getElementById("our-headline");
+    let ourButton = window.document.getElementById("our-button");
+    let listItems = document.getElementById("our-list").getElementsByTagName("li");
+    // SEGA LISTiTEM E SAVKUPNOST OT VSICHKI LI
+  //  for (i = 0; i < listItems.length; i++) {
+  //      listItems[i].addEventListener("click", activateItem);
+  //  }
+    ourList.addEventListener('click', activateItem);
+
+        function activateItem(e) {
+            if (e.target.nodeName == "LI"){
+                ourHeadline.innerHTML = e.target.innerHTML;
+                // this hvashta stoinosta na elementa koito e bil natisnat
+                for (i = 0; i < e.target.parentNode.children.length; i++) {
+                    listItems[i].classList.remove('active');
+                }
+                e.target.classList.add('active');
+            }
+        }
+
+    ourButton.addEventListener("click", createNewItem);
+
+    function createNewItem() {
+        counter++;
+        ourList.innerHTML += "<li>Something "  + counter + "</li>";
+
+    }
